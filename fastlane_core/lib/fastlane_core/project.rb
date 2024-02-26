@@ -345,6 +345,8 @@ module FastlaneCore
       xcode_at_least_11 = FastlaneCore::Helper.xcode_at_least?('11.0')
       if xcode_at_least_11 && options[:cloned_source_packages_path]
         proj << "-clonedSourcePackagesDirPath #{options[:cloned_source_packages_path].shellescape}"
+        proj << "-skipPackageUpdates"
+        proj << "--packageCachePath #{options[:cloned_source_packages_path].shellescape}"
       end
 
       if xcode_at_least_11 && options[:disable_package_automatic_updates]
